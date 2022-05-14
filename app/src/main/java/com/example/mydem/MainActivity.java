@@ -37,7 +37,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
         txtWelcomeMessage = new TextView(this);
-        txtWelcomeMessage.setText("Welcome Android@BitCode");
+       // txtWelcomeMessage.setText("Welcome");
         txtWelcomeMessage.setTextSize(30);
         txtWelcomeMessage.setTextColor(Color.BLACK);
 
