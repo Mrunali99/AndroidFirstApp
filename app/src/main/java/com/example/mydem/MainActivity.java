@@ -1,5 +1,4 @@
 package com.example.mydem;
-
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,10 +12,11 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements View.OnClickListener {
     private EditText edtUsername, edtPassword;
     private TextView txtWelcomeMessage;
     private Button btnSignIn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
         mainContainerLayout.setLayoutParams(layoutParams);
 
 
-        TextView txtWelcomeMessage = new TextView(this);
+        txtWelcomeMessage = new TextView(this);
         txtWelcomeMessage.setText("Welcome Android@BitCode");
         txtWelcomeMessage.setTextSize(30);
         txtWelcomeMessage.setTextColor(Color.BLACK);
@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
         mainContainerLayout.addView(edtUsername);
 
 
-        EditText edtPassword = new EditText(this);
+         edtPassword = new EditText(this);
         edtPassword.setLayoutParams(paramForView);
         mainContainerLayout.addView(edtPassword);
 
@@ -76,11 +76,57 @@ public class MainActivity extends Activity {
         setContentView(mainContainerLayout);
 
 
-        btnSignIn.setOnClickListener(new btnSignClickListener());
+       /*btnSignIn.setOnClickListener(new btnSignClickListener());
+        txtWelcomeMessage.setOnClickListener(new TxtWelcomeMessageClickListener());*/
+
+       /* View.OnClickListener listener = new MyViewClickListener();
+        btnSignIn.setOnClickListener(listener);
+        txtWelcomeMessage.setOnClickListener(listener);*/
+
+        btnSignIn.setOnClickListener(this);
+        txtWelcomeMessage.setOnClickListener(this);
+
+    }
+    @Override
+    public void onClick(View view) {
+        if (view == txtWelcomeMessage) {
+            txtWelcomeMessage.setText("");
+        }
+        if (view == btnSignIn) {
+            if (edtUsername.getText().toString().equals("bitcode") && edtPassword.getText().toString().equals("bitcode@123")) {
+                txtWelcomeMessage.setText("Welcome" + edtUsername.getText().toString());
+            } else {
+                txtWelcomeMessage.setText("Login failed.....");
+            }
+        }
     }
 
 
-    class btnSignClickListener implements View.OnClickListener {
+
+    class MyViewClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            if (view == txtWelcomeMessage) {
+                txtWelcomeMessage.setText("");
+            }
+            if (view == btnSignIn) {
+                if (edtUsername.getText().toString().equals("bitcode") && edtPassword.getText().toString().equals("bitcode@123")) {
+                    txtWelcomeMessage.setText("Welcome" + edtUsername.getText().toString());
+                } else {
+                    txtWelcomeMessage.setText("Login failed.....");
+                }
+            }
+        }
+    }
+
+        class  TxtWelcomeMessageClickListener implements View.OnClickListener{
+          @Override
+        public void onClick (View v) {
+            txtWelcomeMessage.setText(" ");
+        }
+
+    }
+    class BtnSignClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
 
@@ -88,9 +134,9 @@ public class MainActivity extends Activity {
                 txtWelcomeMessage.setText("Welcome" + edtUsername.getText().toString());
 
             } else {
-                txtWelcomeMessage.setText("Login Failed.....");
+                txtWelcomeMessage.setText("Login failed.....");
             }
-
         }
+
     }
 }
