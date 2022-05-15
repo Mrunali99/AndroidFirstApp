@@ -37,7 +37,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
         txtWelcomeMessage = new TextView(this);
-       // txtWelcomeMessage.setText("Welcome");
+        txtWelcomeMessage.setText("Welcome");
         txtWelcomeMessage.setTextSize(30);
         txtWelcomeMessage.setTextColor(Color.BLACK);
 
@@ -93,8 +93,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
             txtWelcomeMessage.setText("");
         }
         if (view == btnSignIn) {
-            if (edtUsername.getText().toString().equals("bitcode") && edtPassword.getText().toString().equals("bitcode@123")) {
-                txtWelcomeMessage.setText("Welcome" + edtUsername.getText().toString());
+            if (edtUsername.getText().toString().equals("   bitcode  ") && edtPassword.getText().toString().equals("bitcode@123")) {
+                txtWelcomeMessage.setText("  Welcome  " + edtUsername.getText().toString());
             } else {
                 txtWelcomeMessage.setText("Login failed.....");
             }
